@@ -16,7 +16,11 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
     return 0;
 }
 
-int WINAPI makeWindow(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow, char *title, int x_scale, int y_scale) {
+int WINAPI makeWindow(char *title, int x_scale, int y_scale, int backgroundColor) {
+    HINSTANCE hInstance;
+    HINSTANCE hPrevInstance;
+    LPSTR lpCmdLine;
+    int nCmdShow;
 
     const char ava_window[] = "AVA_WINDOW"; //Define the window class name -- This is needed for future references.
 
@@ -32,7 +36,7 @@ int WINAPI makeWindow(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdL
     wc.hInstance     = hInstance;                         // Handle to application instance
     wc.hIcon         = LoadIcon(NULL, IDI_APPLICATION);   // Large icon, normally shown under ALT + TAB
     wc.hCursor       = LoadCursor(NULL, IDC_ARROW);       // Cursor to display when on window
-    wc.hbrBackground = (HBRUSH)(COLOR_WINDOW+1);          // Background Color
+    wc.hbrBackground = (HBRUSH)(backgroundColor);                      // Background Color
     wc.lpszMenuName  = NULL;                              // Name of a menu resource to use for the windows with this class (???)
     wc.lpszClassName = ava_window;                        // Name to identify class with
     wc.hIconSm       = LoadIcon(NULL, IDI_APPLICATION);   // Small 16x16 icon in the top left corner of window.
